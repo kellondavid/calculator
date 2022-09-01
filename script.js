@@ -31,38 +31,42 @@ function divFn(num1, num2) {
 
 //operator function
 function operate (a, b, c) {
+    const num1 = parseFloat(a);
+    const num2 = parseFloat(b);
     let output = 0;
     try {
   
       switch(c) {
         case '+':
-          if (operator === "+")
-          output = addFn(a, b);
+          output = addFn(num1, num2);
           break;
   
         case 'x':
-          if (operator === "x")
-          output = multiFn(a, b);
+          output = multiFn(num1, num2);
           break;
   
         case '-':
-          if (operator === "-")
-          output = subFn(a, b);
+          output = subFn(num1, num2);
           break;
   
        case '/': 
-          if (operator === "/")
-          output = divFn(a, b);
+          output = divFn(num1, num2);
           break;
       }
     }
     catch(e) {
-      console.log("There's an error: ", e)
+      currentDisplay.textContent = ("There's an error: ", e)
     };
     currentDisplay.textContent = output;
 }
 
-equal.addEventListener("click", operate);
+// equal.addEventListener("click", (e) => {
+//   operate(prevNum, currentNum, operator)
+// });
+
+equal.addEventListener("click", (e) => {
+  operate(prevNum, currentNum, operator)
+});
 
 //button inputs
 numberButtons.forEach(btn => {
@@ -91,3 +95,14 @@ function handleOperator(op) {
   currentNum = ""
   currentDisplay.textContent = "";
 }
+
+function addDot() {
+  if (!currentNum.includes(".")) {
+    currentNum += ".";
+    currentDisplay.textContent = currentNum;
+  }
+}
+
+dot.addEventListener("click", () => {
+  addDot();
+})
