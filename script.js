@@ -2,7 +2,8 @@ let currentNum = "";
 let prevNum = "";
 let operator = "";
 const numberButtons = document.querySelectorAll(".num-btns")
-const equals = document.querySelector(".equals");
+const operatorButtons = document.querySelectorAll(".operator")
+const equal = document.querySelector(".equal");
 const dot = document.querySelector(".dot");
 const clear = document.querySelector(".clear");
 const del = document.querySelector(".del");
@@ -35,41 +36,35 @@ function operate (a, b, c) {
   
       switch(c) {
         case '+':
+          if (operator === "+")
           output = addFn(a, b);
           break;
   
-        case '*':
+        case 'x':
+          if (operator === "x")
           output = multiFn(a, b);
           break;
   
         case '-':
+          if (operator === "-")
           output = subFn(a, b);
           break;
   
        case '/': 
-            output = divFn(a, b);
+          if (operator === "/")
+          output = divFn(a, b);
           break;
       }
     }
     catch(e) {
       console.log("There's an error: ", e)
     };
-  
-    return output;
+    currentDisplay.textContent = output;
 }
 
-//event listeners for buttons
-// const one = document.getElementsByClassName("1")
-// const two = document.getElementsByClassName("2")
-// let choice
+equal.addEventListener("click", operate);
 
-
-
-//display
-// let display = document.getElementsByClassName('display')
-// display = "";
-
-//keyboard input listener
+//button inputs
 numberButtons.forEach(btn => {
     btn.addEventListener("click", (e) => {
         handleNumber(e.target.textContent);
@@ -81,4 +76,18 @@ function handleNumber(number) {
         currentNum += number;
         currentDisplay.textContent = currentNum;
     }
+}
+
+operatorButtons.forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    handleOperator(e.target.textContent);
+  });
+});
+
+function handleOperator(op) {
+  operator = op
+  prevNum = currentNum
+  prevDisplay.textContent = prevNum + " " + operator;
+  currentNum = ""
+  currentDisplay.textContent = "";
 }
