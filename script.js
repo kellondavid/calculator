@@ -5,8 +5,8 @@ const numberButtons = document.querySelectorAll(".num-btns")
 const operatorButtons = document.querySelectorAll(".operator")
 const equal = document.querySelector(".equal");
 const dot = document.querySelector(".dot");
-const clear = document.querySelector(".clear");
-const del = document.querySelector(".del");
+const clearBtn = document.querySelector(".clear");
+const deleteBtn = document.querySelector(".delete");
 const currentDisplay = document.querySelector(".current-number");
 const prevDisplay = document.querySelector(".previous-number");
 
@@ -49,8 +49,12 @@ function operate (a, b, c) {
           output = subFn(num1, num2);
           break;
   
-       case '/': 
+       case '/':
+          if (num2 === 0) {
+            output = "ERROR"
+          } else {
           output = divFn(num1, num2);
+          }
           break;
       }
     }
@@ -58,6 +62,7 @@ function operate (a, b, c) {
       currentDisplay.textContent = ("There's an error: ", e)
     };
     currentDisplay.textContent = output;
+    currentNum = output;
 }
 
 // equal.addEventListener("click", (e) => {
@@ -65,10 +70,12 @@ function operate (a, b, c) {
 // });
 
 equal.addEventListener("click", (e) => {
-  operate(prevNum, currentNum, operator)
+  if (currentNum != "" && prevNum != "") {
+  operate(prevNum, currentNum, operator);
+  }
 });
 
-//button inputs
+//button inputs for numbers and operators
 numberButtons.forEach(btn => {
     btn.addEventListener("click", (e) => {
         handleNumber(e.target.textContent);
@@ -106,3 +113,22 @@ function addDot() {
 dot.addEventListener("click", () => {
   addDot();
 })
+
+//clear button
+function reset() {
+  currentDisplay.textContent = "";
+  prevDisplay.textContent = "";
+  currentNum = "";
+  prevNum = "";
+}
+
+clearBtn.addEventListener("click", reset);
+
+//delete button
+function delNumber() {
+  currentDisplay.textContent = currentDisplay.textContent
+  .toString()
+  .slice(0, -1)
+}
+
+deleteBtn.addEventListener("click", delNumber);
