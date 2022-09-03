@@ -94,11 +94,13 @@ operatorButtons.forEach((btn) => {
 });
 
 function handleOperator(op) {
-  operator = op
-  prevNum = currentNum
-  prevDisplay.textContent = prevNum + " " + operator;
-  currentNum = ""
-  currentDisplay.textContent = "";
+  if (currentNum != "") {
+    operator = op
+    prevNum = currentNum
+    prevDisplay.textContent = prevNum + " " + operator;
+    currentNum = ""
+    currentDisplay.textContent = "";
+  }
 }
 
 function addDot() {
