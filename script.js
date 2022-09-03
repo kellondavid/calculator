@@ -61,18 +61,15 @@ function operate (a, b, c) {
     catch(e) {
       currentDisplay.textContent = ("There's an error: ", e)
     };
-    currentDisplay.textContent = output;
+    currentDisplay.textContent = Math.round(output *100000) / 100000;
     currentNum = output;
 }
-
-// equal.addEventListener("click", (e) => {
-//   operate(prevNum, currentNum, operator)
-// });
 
 equal.addEventListener("click", (e) => {
   if (currentNum != "" && prevNum != "") {
   operate(prevNum, currentNum, operator);
   }
+  prevNum = "";
 });
 
 //button inputs for numbers and operators
@@ -83,6 +80,7 @@ numberButtons.forEach(btn => {
 });
 
 function handleNumber(number) {
+  currentNum = ""
     if (currentNum.length <= 10) {
         currentNum += number;
         currentDisplay.textContent = currentNum;
@@ -128,7 +126,8 @@ clearBtn.addEventListener("click", reset);
 function delNumber() {
   currentDisplay.textContent = currentDisplay.textContent
   .toString()
-  .slice(0, -1)
+  .slice(0, -1);
+  currentNum = currentDisplay.textContent;
 }
 
 deleteBtn.addEventListener("click", delNumber);
