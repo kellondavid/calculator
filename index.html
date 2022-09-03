@@ -6,45 +6,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
     <link rel="stylesheet" href="./style.css">
+    <script src="https://kit.fontawesome.com/1ef3d5c65e.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Annie+Use+Your+Telescope&family=Indie+Flower&family=League+Script&family=Merriweather&family=Montserrat:wght@100;400;900&family=Roboto&family=Sacramento&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="display">
-        <div class="previous-number">
+    <div class="calc">
+        <div class="display">
+            <div class="previous-number">
+            </div>
+            <div class="current-number"></div>
         </div>
-        <div class="current-number"></div>
+        <div class="btns">
+            <div>
+                <button class="topBtns clear">AC</button>
+                <button class="topBtns delete">DEL</button>
+            </div>
+            <div class="row1">
+                <div class="num-btns1">
+                    <button class="num-btns">7</button>
+                    <button class="num-btns">8</button>
+                    <button class="num-btns">9</button>
+                    <button class="operator">/</button>
+                </div>
+                <div class="row2">
+                    <button class="num-btns">4</button>
+                    <button class="num-btns">5</button>
+                    <button class="num-btns">6</button>
+                    <button class="operator">x</button>
+                </div>
+                <div class="row3">
+                    <button class="num-btns">1</button>
+                    <button class="num-btns">2</button>
+                    <button class="num-btns">3</button>
+                    <button class="operator">-</button>
+                </div>
+                <div class="row4">
+                    <button class="dot">.</button>
+                    <button class="num-btns">0</button>
+                    <button class="equal">=</button>
+                    <button class="operator">+</button>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="btns">
-        <div>
-            <button class="clear">AC</button>
-            <button class="delete">DEL</button>
-        </div>
-        <div class="row1">
-            <div class="num-btns1">
-                <button class="num-btns">7</button>
-                <button class="num-btns">8</button>
-                <button class="num-btns">9</button>
-                <button class="operator">/</button>
-            </div>
-            <div class="row2">
-                <button class="num-btns">4</button>
-                <button class="num-btns">5</button>
-                <button class="num-btns">6</button>
-                <button class="operator">x</button>
-            </div>
-            <div class="row3">
-                <button class="num-btns">1</button>
-                <button class="num-btns">2</button>
-                <button class="num-btns">3</button>
-                <button class="operator">-</button>
-            </div>
-            <div class="row4">
-                <button class="dot">.</button>
-                <button class="num-btns">0</button>
-                <button class="equal">=</button>
-                <button class="operator">+</button>
-            </div>
-        </div>
-    </div>
+    <footer>
+        <h3 class="signature">Copyright © <script>document.write(new Date().getFullYear());</script> kellondavid <a href="https://github.com/kellondavid"><i class="fa-brands fa-github"></i></h3></a>
+    </footer>
+    </footer>
 </body>
 <script src="./script.js"></script>
 </html>
