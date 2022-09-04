@@ -80,11 +80,8 @@ numberButtons.forEach(btn => {
 });
 
 function handleNumber(number) {
-  currentNum = ""
-    if (currentNum.length <= 10) {
         currentNum += number;
         currentDisplay.textContent = currentNum;
-    }
 }
 
 operatorButtons.forEach((btn) => {

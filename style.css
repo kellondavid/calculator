@@ -1,3 +1,11 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
 body {
     background-color: #172a3a;
     font-family: 'Roboto', sans-serif;
@@ -15,14 +23,31 @@ body {
 }
 
 .display {
-    display: flex;
-    flex-direction: row;
     background-color: white;
-    height: 70px;
-    width: auto;
-    border-radius: 25px;
+    height: auto;
+    width: 250px;
+    border-radius: 5px;
     margin-bottom: 12px;
     margin-top: 5px;
+    text-align: right;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.previous-number{
+    font-size: 20px;
+    margin-top: 5px;
+    min-height: 40px;
+    margin-right: 20px;
+    margin-left: 15px;
+    padding-top: 10px;
+}
+
+.current-number{
+    font-size: 30px;
+    min-height: 50px;
+    margin-right: 20px;
+    margin-left: 15px;
 }
 
 .topBtns {
@@ -30,7 +55,7 @@ body {
 }
 
 .clear {
-    background-color: #DC0073;
+    background-color: #EE7674;
 }
 
 .delete {
@@ -49,6 +74,10 @@ button {
     background-color: white;
     color: black;
     border-radius: 10px;
+}
+
+button:hover {
+    background-color: #df2935;
 }
 
 footer {
