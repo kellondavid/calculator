@@ -1,7 +1,7 @@
 let currentNum = "";
 let prevNum = "";
 let operator = "";
-let clearOnNextNum = false;
+let clearOnNextNum = false; //clear the output when a new number is pressed
 const numberButtons = document.querySelectorAll(".num-btns")
 const operatorButtons = document.querySelectorAll(".operator")
 const equal = document.querySelector(".equal");
@@ -98,10 +98,13 @@ operatorButtons.forEach((btn) => {
 
 function handleOperator(op) {
   clearOnNextNum = false;
+
+  //chain operate without the need to press '=' after each operator
   if (prevNum != "" && currentNum != "" && operator != "") {
     operate(prevNum, currentNum, operator);
   }
-  
+  //
+
   if (currentNum != "") {
     operator = op
     prevNum = currentNum
