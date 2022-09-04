@@ -98,6 +98,10 @@ operatorButtons.forEach((btn) => {
 
 function handleOperator(op) {
   clearOnNextNum = false;
+  if (prevNum != "" && currentNum != "" && operator != "") {
+    operate(prevNum, currentNum, operator);
+  }
+  
   if (currentNum != "") {
     operator = op
     prevNum = currentNum
