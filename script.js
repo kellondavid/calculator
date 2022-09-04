@@ -82,7 +82,7 @@ numberButtons.forEach(btn => {
 });
 
 function handleNumber(number) {
-        if (clearOnNextNum) {
+        if (clearOnNextNum === true) {
             clearOnNextNum = false;
             currentNum = "";
         }
@@ -138,3 +138,32 @@ function delNumber() {
 }
 
 deleteBtn.addEventListener("click", delNumber);
+
+//keyboard inputs
+window.addEventListener('keydown', handleKeyboard)
+
+function handleKeyboard(e) {
+  e.preventDefault();
+  if (e.key >= 0 && e.key <= 9) {
+    handleNumber(e.key);
+  }
+  if (e.key === "Enter" || e.key === "=" && currentNum != "" && prevNum != "")
+  {
+    if (currentNum != "" && prevNum != "") {
+      operate(prevNum, currentNum, operator);
+      }
+      prevNum = "";
+  }
+  if (e.key === "+" || e.key === "-" || e.key === "/") {
+    handleOperator(e.key);
+  }
+  if (e.key === "*" || e.key == "x") {
+    handleOperator("x");
+  }
+  if (e.key === ".") {
+    addDot();
+  }
+  if (e.key === "Backspace") {
+    delNumber();
+  }
+};
