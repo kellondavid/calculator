@@ -1,6 +1,7 @@
 let currentNum = "";
 let prevNum = "";
 let operator = "";
+let clearOnNextNum = false;
 const numberButtons = document.querySelectorAll(".num-btns")
 const operatorButtons = document.querySelectorAll(".operator")
 const equal = document.querySelector(".equal");
@@ -63,6 +64,7 @@ function operate (a, b, c) {
     };
     currentDisplay.textContent = Math.round(output *100000) / 100000;
     currentNum = output;
+    clearOnNextNum = true;
 }
 
 equal.addEventListener("click", (e) => {
@@ -80,6 +82,10 @@ numberButtons.forEach(btn => {
 });
 
 function handleNumber(number) {
+        if (clearOnNextNum) {
+            clearOnNextNum = false;
+            currentNum = "";
+        }
         currentNum += number;
         currentDisplay.textContent = currentNum;
 }
@@ -91,6 +97,7 @@ operatorButtons.forEach((btn) => {
 });
 
 function handleOperator(op) {
+  clearOnNextNum = false;
   if (currentNum != "") {
     operator = op
     prevNum = currentNum
@@ -101,6 +108,7 @@ function handleOperator(op) {
 }
 
 function addDot() {
+  clearOnNextNum = false;
   if (!currentNum.includes(".")) {
     currentNum += ".";
     currentDisplay.textContent = currentNum;
