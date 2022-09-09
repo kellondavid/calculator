@@ -1,5 +1,7 @@
 let currentNum = "";
+let currentNum2 = "";
 let prevNum = "";
+let prevNum2 = "";
 let operator = "";
 let clearOnNextNum = false; //clear the output when a new number is pressed
 const numberButtons = document.querySelectorAll(".num-btns")
@@ -69,7 +71,9 @@ function operate (a, b, c) {
 
 equal.addEventListener("click", (e) => {
   if (currentNum != "" && prevNum != "") {
-  operate(prevNum, currentNum, operator);
+  prevNum2 = currentNum
+  currentNum2 =  operate(prevNum, currentNum, operator);
+  prevDisplay.textContent = prevNum + " " + operator + " " + prevNum2 + " =";
   }
   prevNum = "";
 });
