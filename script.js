@@ -69,10 +69,12 @@ function operate(a, b, c) {
     clearOnNextNum = true;
     currentNum = "";
     currentDisplay.textContent = "ERROR :(";
+    deleteBtn.disabled = true;
   } else {
     currentDisplay.textContent = Math.round(output * 100000) / 100000;
     currentNum = output;
     clearOnNextNum = true;
+    deleteBtn.disabled = true;
   }
 }
 
@@ -99,6 +101,7 @@ function handleNumber(number) {
   }
   currentNum += number;
   currentDisplay.textContent = currentNum;
+  deleteBtn.disabled = false;
 }
 
 operatorButtons.forEach((btn) => {
@@ -188,6 +191,6 @@ function handleKeyboard(e) {
     addDot();
   }
   if (e.key === "Backspace") {
-    delNumber();
+    deleteBtn.click();
   }
 }
