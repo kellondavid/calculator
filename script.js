@@ -127,7 +127,7 @@ function handleOperator(op) {
 
 function addDot() {
   clearOnNextNum = false;
-  if (!currentNum.includes(".")) {
+  if (!currentDisplay.textContent.includes(".")) {
     currentNum += ".";
     currentDisplay.textContent = currentNum;
   }
