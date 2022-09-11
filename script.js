@@ -1,9 +1,9 @@
-let currentNum = "";
+let currentNum = "0";
 let currentNum2 = "";
 let prevNum = "";
 let prevNum2 = "";
 let operator = "";
-let clearOnNextNum = false; //clear the output when a new number is pressed
+let clearOnNextNum = true; //clear the output when a new number is pressed
 const numberButtons = document.querySelectorAll(".num-btns");
 const operatorButtons = document.querySelectorAll(".operator");
 const equal = document.querySelector(".equal");
@@ -12,6 +12,7 @@ const clearBtn = document.querySelector(".clear");
 const deleteBtn = document.querySelector(".delete");
 const currentDisplay = document.querySelector(".current-number");
 const prevDisplay = document.querySelector(".previous-number");
+currentDisplay.textContent = "0"
 
 //add, subtract, multiply, and divide functions
 function addFn(num1, num2) {
@@ -128,9 +129,10 @@ dot.addEventListener("click", () => {
 
 //clear button
 function reset() {
-  currentDisplay.textContent = "";
+  clearOnNextNum = true;
+  currentDisplay.textContent = "0";
   prevDisplay.textContent = "";
-  currentNum = "";
+  currentNum = "0";
   prevNum = "";
 }
 
