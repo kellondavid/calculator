@@ -12,7 +12,7 @@ const clearBtn = document.querySelector(".clear");
 const deleteBtn = document.querySelector(".delete");
 const currentDisplay = document.querySelector(".current-number");
 const prevDisplay = document.querySelector(".previous-number");
-currentDisplay.textContent = "0"
+currentDisplay.textContent = "0";
 
 //add, subtract, multiply, and divide functions
 function addFn(num1, num2) {
@@ -43,7 +43,11 @@ function operate(a, b, c) {
         break;
 
       case "x":
-        output = multiFn(num1, num2);
+        if (num1 === 0 || num2 === 0) {
+          output = "ERROR";
+        } else {
+          output = multiFn(num1, num2);
+        }
         break;
 
       case "-":
@@ -51,7 +55,7 @@ function operate(a, b, c) {
         break;
 
       case "/":
-        if (num2 === 0) {
+        if (num1 === 0 || num2 === 0) {
           output = "ERROR";
         } else {
           output = divFn(num1, num2);
@@ -61,9 +65,15 @@ function operate(a, b, c) {
   } catch (e) {
     currentDisplay.textContent = ("There's an error: ", e);
   }
-  currentDisplay.textContent = Math.round(output * 100000) / 100000;
-  currentNum = output;
-  clearOnNextNum = true;
+  if (output === "ERROR") {
+    clearOnNextNum = true;
+    currentNum = "";
+    currentDisplay.textContent = "ERROR :(";
+  } else {
+    currentDisplay.textContent = Math.round(output * 100000) / 100000;
+    currentNum = output;
+    clearOnNextNum = true;
+  }
 }
 
 equal.addEventListener("click", (e) => {
