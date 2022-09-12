@@ -13,6 +13,7 @@ const deleteBtn = document.querySelector(".delete");
 const currentDisplay = document.querySelector(".current-number");
 const prevDisplay = document.querySelector(".previous-number");
 currentDisplay.textContent = "0";
+deleteBtn.disabled = true;
 
 //add, subtract, multiply, and divide functions
 function addFn(num1, num2) {
@@ -150,6 +151,7 @@ function reset() {
   prevDisplay.textContent = "";
   currentNum = "0";
   prevNum = "";
+  deleteBtn.disabled = true;
 }
 
 clearBtn.addEventListener("click", reset);
