@@ -130,7 +130,10 @@ function handleOperator(op) {
 
 function addDot() {
   clearOnNextNum = false;
-  if (!currentDisplay.textContent.includes(".")) {
+  if (deleteBtn.disabled === true) {
+    currentNum = ".";
+    currentDisplay.textContent = ".";
+  } else if (!currentDisplay.textContent.includes(".")) {
     currentNum += ".";
     currentDisplay.textContent = currentNum;
   }
