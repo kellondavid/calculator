@@ -84,8 +84,8 @@ equal.addEventListener("click", (e) => {
     prevNum2 = currentNum;
     currentNum2 = operate(prevNum, currentNum, operator);
     prevDisplay.textContent = prevNum + " " + operator + " " + prevNum2 + " =";
+    prevNum = "";
   }
-  prevNum = "";
 });
 
 //button inputs for numbers and operators
